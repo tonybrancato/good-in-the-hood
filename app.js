@@ -35,21 +35,20 @@ function success(position) {
           //name, address, cuisine, link to place
           position: latLng,
           title: `${places[i].restaurant.name} at ${places[i].restaurant.location.address}`,
-          info:`<h1>${places[i].restaurant.name}</h1>
+          info:`<div id='infoWindow'><h2>${places[i].restaurant.name}</h2>
                 <p>${places[i].restaurant.location.address}</p>
-                <p><${places[i].restaurant.cuisines}/p>
-                <p><a href="${places[i].restaurant.url}" </a></p>`,
+                <p>${places[i].restaurant.cuisines}</p>
+                <p><a href="${places[i].restaurant.menu_url}">Menu</a></p>
+                <p>User Rating: ${places[i].restaurant.user_rating.aggregate_rating} / 5 | ${places[i].restaurant.user_rating.rating_text}</p></div>`,
           animation: google.maps.Animation.DROP,
           map: map
         })
+          $('.hood-name').html(`<h3>${response.location.title}</h3>`);
+          $('.hood-info').show();
           marker.addListener('click', function() {
             infoWindow = new google.maps.InfoWindow({
               content: this.info
             })
-            currWindow = infoWindow;
-            if( currWindow ) {
-                currWindow.close();
-            }            
             //infoWindow.getContent         
             infoWindow.open(map, marker);
             map.setCenter(marker.getPosition());  
@@ -74,5 +73,5 @@ $('#clickMe').click(function () {
   navigator.geolocation.getCurrentPosition(success, error);
 })
 
-
+$('.hood-info').hide();
 

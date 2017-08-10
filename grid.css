@@ -8,7 +8,6 @@
 /*  COLUMN SETUP  */
 .col {
 	display: block;
-	float:left;
 	margin: 1% 0 1% 1%;
 }
 .col:first-child { margin-left: 0; }
