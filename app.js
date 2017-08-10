@@ -1,4 +1,3 @@
-
 function success(position) {
   let latitude  = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -6,9 +5,6 @@ function success(position) {
     lat: position.coords.latitude,
     lng: position.coords.longitude
   };
-  infoWindow.setPosition(pos);
-  infoWindow.setContent('You are here');
-  infoWindow.open(map);
   map.setCenter(pos);
   map.setZoom(11);
 //Zomato API
@@ -33,14 +29,31 @@ function success(position) {
       let places = response.nearby_restaurants;
       //for each nearby restaurant, create a map marker
       for(i=0; i<places.length; i++) {
-        writeResults(places);
         let latLng = new google.maps.LatLng(places[i].restaurant.location.latitude, response.nearby_restaurants[i].restaurant.location.longitude);
         let marker = new google.maps.Marker({
+          //make map markers clickable, link with info--something to inform the user of what they're looking at
+          //name, address, cuisine, link to place
           position: latLng,
-          title: places[i].restaurant.name,
+          title: `${places[i].restaurant.name} at ${places[i].restaurant.location.address}`,
+          info:`<h1>${places[i].restaurant.name}</h1>
+                <p>${places[i].restaurant.location.address}</p>
+                <p><${places[i].restaurant.cuisines}/p>
+                <p><a href="${places[i].restaurant.url}" </a></p>`,
           animation: google.maps.Animation.DROP,
           map: map
         })
+          marker.addListener('click', function() {
+            infoWindow = new google.maps.InfoWindow({
+              content: this.info
+            })
+            currWindow = infoWindow;
+            if( currWindow ) {
+                currWindow.close();
+            }            
+            //infoWindow.getContent         
+            infoWindow.open(map, marker);
+            map.setCenter(marker.getPosition());  
+            });
       }
   });
 } 
@@ -52,17 +65,12 @@ let map, infoWindow;
 function initMap() {
 map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 38.390954, lng: -96.1318693},
-    zoom: 5
+    zoom: 4
 });
 }
 
-function writeResults(array) {
-  $('#api-results').html();
-  return `<h1>${array[i].restaurant.name}</h1>`
-}
 
 $('#clickMe').click(function () {
-  infoWindow = new google.maps.InfoWindow;
   navigator.geolocation.getCurrentPosition(success, error);
 })
 
