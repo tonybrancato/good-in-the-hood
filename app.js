@@ -21,39 +21,42 @@ function success(position) {
       lat: latitude,
       lon: longitude,
     },
-    dataType: 'json',
-    }
+    dataType: 'json'
+  }
 
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-      let places = response.nearby_restaurants;
-      //for each nearby restaurant, create a map marker
-      for(i=0; i<places.length; i++) {
-        let latLng = new google.maps.LatLng(places[i].restaurant.location.latitude, response.nearby_restaurants[i].restaurant.location.longitude);
-        let marker = new google.maps.Marker({
-          //make map markers clickable, link with info--something to inform the user of what they're looking at
-          //name, address, cuisine, link to place
-          position: latLng,
-          title: `${places[i].restaurant.name} at ${places[i].restaurant.location.address}`,
-          info:`<div id='infoWindow'><h2>${places[i].restaurant.name}</h2>
-                <p>${places[i].restaurant.location.address}</p>
-                <p>${places[i].restaurant.cuisines}</p>
-                <p><a href="${places[i].restaurant.menu_url}">Menu</a></p>
-                <p>User Rating: ${places[i].restaurant.user_rating.aggregate_rating} / 5 | ${places[i].restaurant.user_rating.rating_text}</p></div>`,
-          animation: google.maps.Animation.DROP,
-          map: map
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    let places = response.nearby_restaurants;
+    let infoWindow; //= new google.maps.InfoWindow
+    //for each nearby restaurant, create a map marker
+    for(i=0; i<places.length; i++) {
+      let latLng = new google.maps.LatLng(places[i].restaurant.location.latitude, response.nearby_restaurants[i].restaurant.location.longitude);
+      let marker = new google.maps.Marker({
+        //make map markers clickable, link with info--something to inform the user of what they're looking at
+        //name, address, cuisine, link to place
+        position: latLng,
+        title: `${places[i].restaurant.name} at ${places[i].restaurant.location.address}`,
+        info:`<div class='infoWindow'><h2>${places[i].restaurant.name}</h2>
+              <p>${places[i].restaurant.location.address}</p>
+              <p>${places[i].restaurant.cuisines}</p>
+              <p><a href="${places[i].restaurant.menu_url}">Menu</a></p>
+              <p>User Rating: ${places[i].restaurant.user_rating.aggregate_rating} / 5 | ${places[i].restaurant.user_rating.rating_text}</p></div>`,
+        animation: google.maps.Animation.DROP,
+        map: map
+      });
+      $('.hood-name').html(`<h3>${response.location.title}</h3>`);
+      $('.hood-name').show();
+      marker.addListener('click', function() {
+        if (infoWindow) {
+          infoWindow.close();
+        }
+        infoWindow = new google.maps.InfoWindow({
+          content: this.info
         })
-          $('.hood-name').html(`<h3>${response.location.title}</h3>`);
-          $('.hood-info').show();
-          marker.addListener('click', function() {
-            infoWindow = new google.maps.InfoWindow({
-              content: this.info
-            })
-            //infoWindow.getContent         
-            infoWindow.open(map, marker);
-            map.setCenter(marker.getPosition());  
-            });
-      }
+        infoWindow.open(map, marker);
+        map.setCenter(marker.getPosition());  
+      });
+    }
   });
 } 
 function error() {
