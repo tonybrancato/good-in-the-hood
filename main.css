@@ -39,7 +39,7 @@ main {
 
 .infoWindow {
   overflow: scroll;
-  height: 200px;
+  height: 175px;
 }
 
 .hood-info {
@@ -72,6 +72,6 @@ h3 {
 
 @media only screen and (max-height: 700px) {
   #clickMe {
-    font-size: 15pt;
+    font-size: 12pt;
   }
 }
