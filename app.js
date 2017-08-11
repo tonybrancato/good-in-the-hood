@@ -44,6 +44,12 @@ function success(position) {
         animation: google.maps.Animation.DROP,
         map: map
       });
+      function changeButtonText() {
+        if (marker) {
+          $('#clickMe').text('Search Again');
+        } 
+      }
+      changeButtonText();
       $('.hood-name').html(`<h3>${response.location.title}</h3>`);
       $('.hood-name').show();
       marker.addListener('click', function() {
@@ -59,8 +65,10 @@ function success(position) {
   });
 } 
 function error() {
-  alert('sometthing went wrong')
+  alert("Please enable location services in order to find What's Good in Your Hood!");
 }
+
+
 
 let map, infoWindow;
 function initMap() {
@@ -70,10 +78,11 @@ map = new google.maps.Map(document.getElementById('map'), {
 });
 }
 
-
 $('#clickMe').click(function () {
   navigator.geolocation.getCurrentPosition(success, error);
 })
 
-$('.hood-info').hide();
+
+
+$('.hood-name').hide();
 
