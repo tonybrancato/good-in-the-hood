@@ -6,7 +6,7 @@ function success(position) {
     lng: position.coords.longitude
   };
   map.setCenter(pos);
-  map.setZoom(11);
+  map.setZoom(13);
 //Zomato API
   var settings = {
     "async": true,
@@ -54,7 +54,6 @@ function success(position) {
           content: this.info
         })
         infoWindow.open(map, marker);
-        map.setCenter(marker.getPosition());  
       });
     }
   });
