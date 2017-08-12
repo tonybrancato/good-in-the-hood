@@ -28,12 +28,16 @@ function success(position) {
     console.log(response);
     let places = response.nearby_restaurants;
     let infoWindow;
+    let infoWindow2 = new google.maps.InfoWindow ({
+      content: 'You Are Here'
+    })
     let youAreHere = new google.maps.Marker({
       position: pos,
       title: 'You Are Here',
       map: map,
       animation: google.maps.Animation.DROP
-    })
+    });
+    infoWindow2.open(map, youAreHere);
     //for each nearby restaurant, create a map marker
     for(i=0; i<places.length; i++) {
       let latLng = new google.maps.LatLng(places[i].restaurant.location.latitude, response.nearby_restaurants[i].restaurant.location.longitude);
