@@ -1,7 +1,11 @@
 * {
   box-sizing: border-box;
 }
-
+html {
+  border: 2px solid rgba(255, 140, 0, 0.5);
+  opacity: 90%;
+  height: 100%;
+}
 body {
   max-width: 1000px;
   margin: 0 auto;
@@ -24,7 +28,7 @@ main {
   margin-top: 12px;
   font-family: 'Rock Salt', cursive;
   font-size: 20pt;
-  background-color: darkviolet;
+  background-color: rgba(177, 50, 211, .8);
   border-radius: 4pt;
   border: 0;
   border-color: black;
