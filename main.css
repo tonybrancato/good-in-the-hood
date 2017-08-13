@@ -46,14 +46,6 @@ main {
   height: 175px;
 }
 
-.hood-info {
-  max-width: 500px;
-  height: 75px;
-  margin: 0 auto;
-  position: relative;
-  margin-bottom: 50px;
-}
-
 .hood-name {
   font-family: 'Sedgwick Ave Display', cursive;
   font-size: 50pt;
