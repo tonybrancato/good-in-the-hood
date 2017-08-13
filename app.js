@@ -1,13 +1,15 @@
 function success(position) {
+  //User's coordinates
   let latitude  = position.coords.latitude;
   let longitude = position.coords.longitude;
+  //User's coordinates for google maps API
   const pos = {
     lat: position.coords.latitude,
     lng: position.coords.longitude
   };
   map.setCenter(pos);
   map.setZoom(12);
-//Zomato API
+  //Zomato API call
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -17,7 +19,7 @@ function success(position) {
       "user-key": "0bbf883c661fe8edf59a8624e7f92f73",
     },
     data: {
-    //use longitude and latitude gained from user's location
+      //use longitude and latitude gained from user's location
       lat: latitude,
       lon: longitude,
     },
@@ -25,12 +27,14 @@ function success(position) {
   }
 
   $.ajax(settings).done(function (response) {
-    console.log(response);
     let places = response.nearby_restaurants;
+    //used for marker
     let infoWindow;
+    //used for youAreHere
     let infoWindow2 = new google.maps.InfoWindow ({
       content: 'You Are Here'
     })
+    //map pin showing where the user is, infoWindow2 loads on result load
     let youAreHere = new google.maps.Marker({
       position: pos,
       title: 'You Are Here',
@@ -38,14 +42,13 @@ function success(position) {
       animation: google.maps.Animation.DROP
     });
     infoWindow2.open(map, youAreHere);
-    //for each nearby restaurant, create a map marker
+    //for each nearby restaurant result from the Zomato API, create a map marker
     for(i=0; i<places.length; i++) {
       let latLng = new google.maps.LatLng(places[i].restaurant.location.latitude, response.nearby_restaurants[i].restaurant.location.longitude);
       let marker = new google.maps.Marker({
-        //make map markers clickable, link with info--something to inform the user of what they're looking at
-        //name, address, cuisine, link to place
         position: latLng,
         title: `${places[i].restaurant.name} at ${places[i].restaurant.location.address}`,
+        //Displays inside of the infoWindow of each map pin/restaurant
         info:`<div class='infoWindow'><h2>${places[i].restaurant.name}</h2>
               <p>${places[i].restaurant.location.address}</p>
               <p>${places[i].restaurant.cuisines}</p>
@@ -62,6 +65,7 @@ function success(position) {
       changeButtonText();
       $('.hood-name').html(`<h3>${response.location.title}</h3>`);
       $('.hood-name').show();
+      //Makes each map marker from the Zomato API clickable
       marker.addListener('click', function() {
         if (infoWindow) {
           infoWindow.close();
@@ -79,10 +83,12 @@ function error() {
 }
 
 let map, infoWindow;
+//Creates the map through google maps API V3
 function initMap() {
-map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 38.390954, lng: -96.1318693},
     zoom: 4,
+    //Creats a 'night-time' style of google map
     styles: [
       {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
