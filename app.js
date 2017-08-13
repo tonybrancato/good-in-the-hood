@@ -49,7 +49,7 @@ function success(position) {
         info:`<div class='infoWindow'><h2>${places[i].restaurant.name}</h2>
               <p>${places[i].restaurant.location.address}</p>
               <p>${places[i].restaurant.cuisines}</p>
-              <p><a href="${places[i].restaurant.menu_url}">Menu</a></p>
+              <p><a target="_blank" href="${places[i].restaurant.menu_url}">Menu</a></p>
               <p>User Rating: ${places[i].restaurant.user_rating.aggregate_rating} / 5 | ${places[i].restaurant.user_rating.rating_text}</p></div>`,
         animation: google.maps.Animation.DROP,
         map: map
