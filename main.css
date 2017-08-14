@@ -42,13 +42,12 @@ li {
 }
 
 .landing-button {
-  width: 200px;
-  height: 75px;
   border-radius: 4pt;
   border: 1px solid white;
   color: white;
   background-color: rgba(0, 0, 0, 0);
   font-size: 34pt;
+  padding: 10px;
 }
 
 .landing-button:hover {
