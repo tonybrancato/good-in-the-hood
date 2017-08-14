@@ -175,6 +175,10 @@ function initMap() {
 
 $('#clickMe').click(function () {
   navigator.geolocation.getCurrentPosition(success, error);
-})
+});
+
+$('.landing-button').click(function () {
+  $('.landing-page').fadeOut(1000);
+});
 
 $('.hood-name').hide();

@@ -7,10 +7,53 @@ html {
   height: 100%;
   background-image: url('grey-background.jpg');
 }
+
 body {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
+}
+
+.landing-page {
+  background-color: rgba(0, 0, 0, .8);
+  margin: 0 auto;
+  position: fixed;
+  height: 1000px;
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  z-index: 1;
+  font-family: 'roboto', sans-serif;
+}
+
+.orange{
+  color: darkorange;
+  font-family: 'Sedgwick Ave Display', cursive;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 24pt;
+}
+
+li {
+  list-style-position: inside;
+  font-size: 20pt;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+}
+
+.landing-button {
+  width: 200px;
+  height: 75px;
+  border-radius: 4pt;
+  border: 1px solid white;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 34pt;
+}
+
+.landing-button:hover {
+  color: darkorange;
+  border: 1px solid darkorange;
 }
 
 #map {
@@ -63,6 +106,9 @@ h3 {
   }
   #map {
     width: 100%;
+  }
+  .landing-button {
+    width: 75%;
   }
 }
 
