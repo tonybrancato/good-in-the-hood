@@ -38,6 +38,7 @@ function success(position) {
     let youAreHere = new google.maps.Marker({
       position: pos,
       title: 'You Are Here',
+      icon: 'ltblu-stars.png',
       map: map,
       animation: google.maps.Animation.DROP
     });
