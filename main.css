@@ -17,23 +17,37 @@ html {
   color: white;
   z-index: 1;
   font-family: 'roboto', sans-serif;
+  margin: -10px;
+  font-size: 20pt;
 }
 
 body {
   margin: 0 auto;
   text-align: center;
+  padding: 15px;
+}
+
+.content {
+  margin: 10px;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .orange{
   color: darkorange;
   font-family: 'Sedgwick Ave Display', cursive;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  font-size: 24pt;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 white, 0 -1px white;
+  font-size: 48pt;
+  line-height: 2;
 }
-
+ol {
+  margin-top: -30px;
+}
 li {
   list-style-position: inside;
-  font-size: 20pt;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-right: 30px;
@@ -41,17 +55,17 @@ li {
 
 .landing-button {
   border-radius: 4pt;
-  border: 1px solid white;
+  border: 2px solid white;
   color: white;
   background-color: rgba(0, 0, 0, 0);
-  font-size: 34pt;
+  font-size: 24pt;
   padding: 10px;
   cursor: pointer;
 }
 
 .landing-button:hover {
   color: darkorange;
-  border: 1px solid darkorange;
+  border: 2px solid darkorange;
 }
 
 #map {
@@ -101,15 +115,30 @@ h3 {
   margin: 0;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 640px) {
   .hood-name {
     font-size: 40pt;
   }
   #map {
     width: 100%;
   }
+
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .landing-page {
+    font-size: 17pt;
+  }
+
   .landing-button {
     width: 75%;
+    font-size: 20pt;
+  }
+  .orange {
+    font-size: 36pt;
+    line-height: 0;
   }
 }
 
