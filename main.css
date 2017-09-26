@@ -104,6 +104,11 @@ main {
   height: 175px;
 }
 
+.search-button {
+  width: 25%;
+  
+}
+
 .hood-name {
   font-family: 'Sedgwick Ave Display', cursive;
   font-size: 50pt;

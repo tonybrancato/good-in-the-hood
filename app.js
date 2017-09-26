@@ -176,9 +176,32 @@ function initMap() {
 $('#clickMe').click(function () {
   navigator.geolocation.getCurrentPosition(success, error);
 });
+/*
+$('#zipcode').click(function() {
+  $('.search').fadeOut(500);
+  $('#zip-form').show();
+});
 
+$('.zip-search').click(function() {
+  const zipValue = $('#zip-field').val();
+  console.log(zipValue);
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://developers.zomato.com/api/v2.1/geocode",
+    "method": "GET",
+    "headers": {
+      "user-key": "0bbf883c661fe8edf59a8624e7f92f73",
+    },
+    dataType: 'json'
+  }
+});
+*/
 $('.landing-button').click(function () {
   $('.landing-page').fadeOut(1000);
 });
-
+/*
+$('#clickMe').hide();
+$('#zip-form').hide();
+*/
 $('.hood-name').hide();

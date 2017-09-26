@@ -11,7 +11,7 @@
 	</head>
   <body>
 		<div class="landing-page">
-			<div class="content">
+			<div class="landing-page-content">
 				<div>Welcome to... </div><h2><i class="orange">Good In The Hood!</i></h2>
 				<div>
 					<ol>
@@ -25,8 +25,18 @@
 		</div>
 		<div id="map"></div>
 		<main>
-		<div role="content" class="hood-name"></div>
-		<button role="submit" type="submit" id="clickMe">Find What's Good in My Hood!</button>	
+			<!--
+			<div class="search">
+				<button id="geolocation" class="search-button">Use My Location</button>
+				<button id="zipcode" class="search-button">Input ZIP Code</button> 
+			</div>
+			<form id="zip-form">
+				<h3>Please input the desired 5-digit ZIP</h3>
+				<input id="zip-field" type="number" maxlength="5">
+				<button class="zip-search" type="submit">Search</button>
+			</form> -->
+			<div role="content" class="hood-name"></div>
+			<button role="submit" type="submit" id="clickMe">Find What's Good in My Hood!</button>	
 		</main>
 	  <script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-JkE6AXBAhPTs1a0w6Cm8F2EsTJ1LKIE&callback=initMap"></script>
