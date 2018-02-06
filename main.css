@@ -2,13 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  border: 2px solid rgba(255, 140, 0, 0.5);
-  opacity: 90%;
-  height: 100%;
-  background-image: url('grey-background.jpg');
-}
-
 .landing-page {
   background-image: url('grey-background.jpg');
   position: fixed;
@@ -20,6 +13,12 @@ html {
   margin: -10px;
   font-size: 20pt;
   font-weight: 300;
+}
+
+body {
+  opacity: 90%;
+  height: 100%;
+  background-image: url('grey-background.jpg');
 }
 
 .landing-page-content {
